@@ -29,14 +29,10 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     await Future.delayed(Duration(seconds: 1));     // It will wait for one second
-    await Navigator.pushNamed(
-        context,
-        MyRoutes
-            .homeRoute);                            // After this will execute, it will navigate to home page
+    await Navigator.pushNamed(context,MyRoutes.homeRoute);                            // After this will execute, it will navigate to home page
 
     setState(() {
-      changeButton =
-          false;                                    // This will do false means that login button reatain its size and shape as earlies
+      changeButton = false;                         // This will do false means that login button reatain its size and shape as earlies
     });
     }
   }
@@ -44,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
       child: Form(
         key: _formKey,
         child: Column(
