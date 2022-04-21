@@ -8,8 +8,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Catalog App'),
+      appBar: AppBar( 
+        title: Text('Catalog App', style: TextStyle(color: Colors.black),),
       ),
       body: Center(
         child: Container(
