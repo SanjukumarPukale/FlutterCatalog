@@ -46,13 +46,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
         child: Container(
-          padding: Vx.m32,
+          padding: Vx.m32, 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CatalogHeader(),       
               if(CatalogModel.items != null && CatalogModel.items!.isNotEmpty)    
-               CatalogList().expand()
+               CatalogList().py16().expand()
               else
                CircularProgressIndicator().centered().py16().expand(),
             ],
