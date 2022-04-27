@@ -11,10 +11,12 @@ class HomeDeatilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: MyTheme.creamColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
                   alignment: MainAxisAlignment.spaceBetween,
                   buttonPadding: EdgeInsets.zero,
@@ -23,11 +25,11 @@ class HomeDeatilPage extends StatelessWidget {
                    ElevatedButton(
                      onPressed: (() {}),
                      style: ButtonStyle(
-                       backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor),
+                       backgroundColor: MaterialStateProperty.all(MyTheme.lightBluishColor),
                        shape: MaterialStateProperty.all(StadiumBorder())
                      ),
-                     child: 'Buy'.text.make(),
-                     ).wh(100, 50)
+                     child: 'Add to cart'.text.white.make(),
+                     ).wh(120, 50)
                   ],
                  ).p16(),
       ),
@@ -45,15 +47,20 @@ class HomeDeatilPage extends StatelessWidget {
                     arcType: VxArcType.CONVEY,
                     edge: VxEdge.TOP,
                     child: Container(
-                      color: Colors.white,
+                      color: context.cardColor,
                       width: context.screenWidth,
-                      child: Column(
-                        children: [
-                          catalog.name.text.xl4.color(MyTheme.darkBluishColor).bold.make(),
-                          catalog.desc.text.textStyle(context.captionStyle!).xl.make(),
-                          10.heightBox, 
-                        ],
-                      ).py64()
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            catalog.name.text.xl4.color(MyTheme.lightBluishColor).bold.make(),
+                            catalog.desc.text.textStyle(context.captionStyle!).xl.make(),
+                            10.heightBox, 
+                            'Kasd ea sea ut est amet vero amet duo sit amet. Dolores rebum et takimata ipsum, lorem clita stet lorem dolore clita vero lorem diam. Tempor accusam no et ut no dolores lorem ea justo. Kasd dolore invidunt et sadipscing, amet consetetur ipsum sed rebum amet et et. At et.'
+                            .text.make().p16()
+                        
+                          ],
+                        ).py64(),
+                      )
                                   ),
                   ))
             ]
