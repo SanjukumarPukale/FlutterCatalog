@@ -10,6 +10,7 @@ class MyTheme{
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.white,
         canvasColor: creamColor,
+        buttonColor: darkBluishColor,
         accentColor: Colors.black,
         appBarTheme: AppBarTheme(
         color: Colors.white,
@@ -34,6 +35,7 @@ class MyTheme{
         colorScheme: ColorScheme.dark(),
         cardColor: Colors.black,
         canvasColor: darkCreamColor,
+        buttonColor: lightBluishColor,
         accentColor: Colors.red,
         appBarTheme: AppBarTheme(
         backgroundColor: Colors.black,
