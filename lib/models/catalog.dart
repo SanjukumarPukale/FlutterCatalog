@@ -2,20 +2,26 @@ import 'dart:convert';
 
 class CatalogModel{
 
-  static List<Item>? items;
+  static final catModel = CatalogModel._internal();   // these following 3 line of code is for making singleton pattern
+
+  CatalogModel._internal();
+
+  factory CatalogModel() => catModel;
+
+  static List<Item> items = [];
 
   //get item by id
- static Item getById(int id) => 
-    items!.firstWhere((element) => element.id == id, orElse: null);
+ Item getById(int id) => 
+    items.firstWhere((element) => element.id == id, orElse: null);
 
   //get item by position
- static Item getByPosition(int pos) => items![pos]; 
+ Item getByPosition(int pos) => items[pos]; 
 
 }
 
 
 class Item {
-  final num id;
+  final int id;
   final String name;
   final String desc;
   final num price;
@@ -34,7 +40,7 @@ class Item {
  
 
   Item copyWith({
-    num? id,
+    int? id,
     String? name,
     String? desc,
     num? price,
