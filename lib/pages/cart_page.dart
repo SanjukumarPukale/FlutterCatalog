@@ -13,7 +13,7 @@ class CartPage extends StatelessWidget {
       backgroundColor: context.canvasColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: 'Cart'.text.color(context.accentColor).make(),
+        title: 'Cart'.text.xl4.bold.color(context.accentColor).make(),
       ),
 
       body: Column(
@@ -35,12 +35,20 @@ class _CartTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
-      height: 200,
+      height: 200, 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           // ignore: deprecated_member_use
-          '\$${_cart.totalPrice}'.text.xl5.color(context.theme.accentColor).make(), 
+          VxConsumer(                                           // VxConsumer is same as VxBuilder and VxNotifier we can also use these but some changes is there in these three
+           
+           builder: (context, store, status) {
+             // ignore: deprecated_member_use
+             return '\$${_cart.totalPrice}'.text.xl5.color(context.theme.accentColor).make();
+           },
+           mutations: {RemoveMutaion},
+           notifications: {},
+           ), 
           30.widthBox,
           ElevatedButton(
             onPressed: (){
@@ -61,6 +69,7 @@ class _CartTotal extends StatelessWidget {
 class _CartList extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutaion]);
     final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty ? 'Nothing to show'.text.xl3.makeCentered() : ListView.builder(
       itemCount: _cart.items.length,
@@ -68,10 +77,9 @@ class _CartList extends StatelessWidget{
         leading: Icon(Icons.done),
         trailing: IconButton(
           icon: Icon(Icons.remove_circle_outline),
-          onPressed: (){
-            _cart.remove(_cart.items[index]);
+          onPressed: () =>
+            RemoveMutaion(_cart.items[index]),
             // setState(() {});
-          },
           ),
         title: _cart.items[index].name.text.make(),
       )
